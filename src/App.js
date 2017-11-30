@@ -14,7 +14,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to the Nemo UI</h1>
         </header>
-        <MoviesGallery movies_genre={99}></MoviesGallery>
+        <MoviesGallery movies_genre={28}></MoviesGallery>
       </div>
       </MuiThemeProvider>
     );
