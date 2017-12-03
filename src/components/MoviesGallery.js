@@ -5,6 +5,7 @@ import Lightbox from 'react-images'
 const get_movies_general = 'https://api.themoviedb.org/3/discover/movie?api_key=3d0b764688397d3892a7334e8996' +
         'c16d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=fa' +
         'lse&page=1';
+
 const get_movies_by_genre = movies_genre => 'https://api.themoviedb.org/3/discover/movie?api_key=3d0b764688397d3892a7334e8996' +
         'c16d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=fa' +
         'lse&page=1&with_genres=' + movies_genre;
@@ -12,12 +13,40 @@ const get_movies_by_genre = movies_genre => 'https://api.themoviedb.org/3/discov
 class MoviesGallery extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentImage: 0 };
+        this.state = { 
+            currentImage: 0,
+            movies_genre: null
+        };
         this.closeLightbox = this.closeLightbox.bind(this);
         this.openLightbox = this.openLightbox.bind(this);
         this.gotoNext = this.gotoNext.bind(this);
         this.gotoPrevious = this.gotoPrevious.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({movies_genre: nextProps.movies_genre})
+        if (this.props.movies_genre){
+            fetch(get_movies_by_genre(this.props.movies_genre))
+            .then(res => res.json())
+            .then(res => {
+                this.setState({
+                    movies_list: res
+                })
+            })
+            this.forceUpdate()
+        }
+        else {
+            fetch(get_movies_general)
+            .then(res => res.json())
+            .then(res => {
+                this.setState({
+                    movies_list: res
+                })
+            })
+            this.forceUpdate()
+        }
+    }
+
     openLightbox(event, obj) {
         this.setState({
           currentImage: obj.index,
@@ -42,29 +71,17 @@ class MoviesGallery extends Component {
       }
 
     componentDidMount() {
-        if (this.props.movies_genre){
-            fetch(get_movies_by_genre(this.props.movies_genre))
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    movies_list: res
-                })
+        fetch(get_movies_general)
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                movies_list: res
             })
-        }
-        else {
-            fetch(get_movies_general)
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    movies_list: res
-                })
-            })
-        }
-            
+        })    
     }
 
     render() {
-        if (!this.state.movies_list) return <p>Please speak to get recommended movies by speaker ID</p>
+        if (!this.state.movies_list) return <p>Loading...</p>
         var poster_list = []
         for (var i=0; i<this.state.movies_list.results.length; i++) {
             poster_list.push("https://image.tmdb.org/t/p/w500"+this.state.movies_list.results[i].poster_path);
