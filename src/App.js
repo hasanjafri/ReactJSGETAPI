@@ -5,6 +5,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
 import './App.css';
 
+import firebase from './firebase.js';
+
 import MoviesGallery from './components/MoviesGallery.js';
 
 class App extends Component {
@@ -13,6 +15,23 @@ class App extends Component {
     this.state = {
       movies_genre: null
     }
+  }
+
+  componentDidMount() {
+    const itemsRef = firebase.database().ref('Speakers');
+    itemsRef.on('value', (snapshot) => { 
+      let household_speakers = snapshot.val();
+      let speaker_info = [];
+      for (let item in household_speakers){
+        speaker_info.push({
+          name: item,
+          speaker_id: household_speakers[item]
+        });
+      }
+      this.setState({
+        household_speakers: speaker_info
+      });
+    });
   }
 
   onQuery = () => {
@@ -34,7 +53,9 @@ class App extends Component {
           <RaisedButton primary={true} label="Query" className="header_buttons" onClick={this.onQuery}/>
           <RaisedButton secondary={true} label="Reset" className="header_buttons" onClick={this.onReset}/>
         </header>
-        <MoviesGallery movies_genre={movies_genre}/>
+        <div className="movies-gallery">
+          <MoviesGallery movies_genre={movies_genre}/>
+        </div>
       </div>
       </MuiThemeProvider>
     );
