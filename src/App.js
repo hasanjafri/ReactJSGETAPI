@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
 import './App.css';
 
-import firebase from './firebase.js';
+import firebase from './database/firebase.js';
 
 import MoviesGallery from './components/MoviesGallery.js';
 
