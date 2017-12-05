@@ -43,14 +43,19 @@
 	padding-left:250px;
 }
 
-.lightgray-background{
-	background-color:#696969;
+.home-background{
+	background-color: #ac7072;
 }
 
 .usersTopLeft {
     position: relative;
     top: -410px;
     left:-25px;
+}
+
+.sample-text {
+  color: #000000;
+  margin-bottom: -222px;
 }
 
 table {

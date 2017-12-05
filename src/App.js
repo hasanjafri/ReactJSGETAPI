@@ -11,11 +11,8 @@ import firebase from './database/firebase.js';
 import MoviesGallery from './components/MoviesGallery.js';
 
 const styles = {
-  block: {
-    maxWidth: 250,
-  },
   radioButton: {
-    marginBottom: 16,
+    marginBottom: 16
   },
 };
 
@@ -65,18 +62,25 @@ class App extends Component {
           <RaisedButton secondary={true} label="Reset" className="header_buttons" onClick={this.onReset}/>
 
         </header>
-		<table class="tableWidth lightgray-background">
+		<table class="tableWidth">
 			<tr>
 				<td class="usersTopLeft">
-					<RadioButtonGroup name="Users" defaultSelected="UserO">
-					<RadioButton value="UserO" label="Other" style={styles.radioButton} disabled={true}/>
-					<RadioButton value="User0" label="User0" style={styles.radioButton} disabled={true}/>
-					<RadioButton value="User1" label="User1" style={styles.radioButton} disabled={true}/>
-					<RadioButton value="User2" label="User2" style={styles.radioButton} disabled={true}/>
-					<RadioButton value="User3" label="User3" style={styles.radioButton} disabled={true}/>
-					</RadioButtonGroup>
+          <tr>
+					  <RadioButtonGroup name="Speakers" defaultSelected="UserO" labelPosition='right'>
+					    <RadioButton value="UserO" label="Dashboard" style={styles.radioButton} labelStyle={{color: '#000000'}}/>
+					    <RadioButton value="User0" label="Hasan" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
+					    <RadioButton value="User1" label="Ryan" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
+					    <RadioButton value="User2" label="Marcio" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
+					    <RadioButton value="User3" label="Cedric" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
+					  </RadioButtonGroup>
+          </tr>
+          <tr>
+            <h1>hey</h1>
+          </tr>
 				</td>
-				<td><MoviesGallery movies_genre={movies_genre}/></td>
+				<td>
+          <MoviesGallery movies_genre={movies_genre}/>
+        </td>
 			</tr>
 		</table>
 		<div class="sidePadding"></div>
