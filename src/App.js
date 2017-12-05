@@ -25,7 +25,8 @@ class App extends Component {
       for (let item in household_speakers){
         speaker_info.push({
           name: item,
-          speaker_id: household_speakers[item]
+          speaker_id: household_speakers[item].speaker_id,
+          genre_id: household_speakers[item].genre_id
         });
       }
       this.setState({
