@@ -6,6 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import './App.css';
 
+import firebase from './database/firebase.js';
+
 import MoviesGallery from './components/MoviesGallery.js';
 
 const styles = {
@@ -23,6 +25,23 @@ class App extends Component {
     this.state = {
       movies_genre: null
     }
+  }
+
+  componentDidMount() {
+    const itemsRef = firebase.database().ref('Speakers');
+    itemsRef.on('value', (snapshot) => { 
+      let household_speakers = snapshot.val();
+      let speaker_info = [];
+      for (let item in household_speakers){
+        speaker_info.push({
+          name: item,
+          speaker_id: household_speakers[item]
+        });
+      }
+      this.setState({
+        household_speakers: speaker_info
+      });
+    });
   }
 
   onQuery = () => {
