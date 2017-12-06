@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Infinite from 'react-infinite';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import VolumeOffIcon from 'material-ui/svg-icons/av/volume-off';
+import VolumeOnIcon from 'material-ui/svg-icons/av/volume-up';
 import './App.css';
 
 import firebase from './database/firebase.js';
@@ -13,6 +16,12 @@ import MoviesGallery from './components/MoviesGallery.js';
 const styles = {
   radioButton: {
     marginBottom: 16
+  },
+  radioButtonLabel: {
+    color: '#ffffff'
+  },
+  radioButtonUnchecked: {
+    color: '#ffffff'
   },
 };
 
@@ -58,32 +67,32 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to the Nemo UI</h1>
-          <RaisedButton primary={true} label="Query" className="header_buttons" onClick={this.onQuery}/>
-          <RaisedButton secondary={true} label="Reset" className="header_buttons" onClick={this.onReset}/>
-
         </header>
-		<table class="tableWidth">
+		<table class="tableWidth bg-primary">
 			<tr>
-				<td class="usersTopLeft">
+				<td>
           <tr>
-					  <RadioButtonGroup name="Speakers" defaultSelected="UserO" labelPosition='right'>
-					    <RadioButton value="UserO" label="Dashboard" style={styles.radioButton} labelStyle={{color: '#000000'}}/>
-					    <RadioButton value="User0" label="Hasan" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
-					    <RadioButton value="User1" label="Ryan" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
-					    <RadioButton value="User2" label="Marcio" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
-					    <RadioButton value="User3" label="Cedric" style={styles.radioButton} labelStyle={{color: '#000000'}} disabled={true}/>
+					  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
+              <RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
+					    <RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+					    <RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+					    <RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+					    <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
 					  </RadioButtonGroup>
           </tr>
           <tr>
-            <h1>hey</h1>
+          <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
+          <hr/>
+          <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
           </tr>
 				</td>
 				<td>
-          <MoviesGallery movies_genre={movies_genre}/>
+          <Infinite containerHeight={600} elementHeight={40}>
+            <MoviesGallery movies_genre={movies_genre}/>
+          </Infinite>
         </td>
 			</tr>
 		</table>
-		<div class="sidePadding"></div>
       </div>
       </MuiThemeProvider>
     );

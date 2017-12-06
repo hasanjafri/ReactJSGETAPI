@@ -92,15 +92,15 @@ class MoviesGallery extends Component {
         for (var poster in poster_list) {
             var output = {}
             output.src = poster_list[poster];
-            output.width = 2
-            output.height = 2
+            output.width = 1
+            output.height = 1
             output.caption = desc_list[poster];
             output_data.links.push(output)
         }
         console.log(output_data)
         return (
             <div>
-                <Gallery photos={output_data.links} columns={5} margin={2} onClick={this.openLightbox}/>
+                <Gallery photos={output_data.links} columns={3} margin={1} onClick={this.openLightbox}/>
                 <Lightbox images={output_data.links}
                     onClose={this.closeLightbox}
                     onClickPrev={this.gotoPrevious}
