@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Infinite from 'react-infinite';
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -80,15 +81,14 @@ class App extends Component {
 					    <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
 					  </RadioButtonGroup>
           </tr>
+            <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
+            <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
           <tr>
-          <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
-          <hr/>
-          <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
           </tr>
 				</td>
 				<td>
-          <Infinite containerHeight={600} elementHeight={40}>
-            <MoviesGallery movies_genre={movies_genre}/>
+          <Infinite containerHeight={600} elementHeight={100} className="movie-gallery">
+             <MoviesGallery movies_genre={movies_genre}/>
           </Infinite>
         </td>
 			</tr>
