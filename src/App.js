@@ -87,7 +87,7 @@ class App extends Component {
           </tr>
 				</td>
 				<td>
-          <Infinite containerHeight={600} elementHeight={40}>
+          <Infinite containerHeight={608} elementHeight={40}>
             <MoviesGallery movies_genre={movies_genre}/>
           </Infinite>
         </td>
