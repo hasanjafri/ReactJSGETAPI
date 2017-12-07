@@ -81,10 +81,12 @@ class App extends Component {
 							<RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
 							<RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
 						  </RadioButtonGroup>
+						  
+						  <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
+						  <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
 						</tr>
 						<tr>
-							<RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
-							<RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
+							BLANK SPACE
 						</tr>
 					</td>
 				</tr>
