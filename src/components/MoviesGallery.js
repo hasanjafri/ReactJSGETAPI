@@ -22,9 +22,9 @@ class MoviesGallery extends Component {
         this.gotoPrevious = this.gotoPrevious.bind(this);
     }
 
-    fetch_movies = () => {
-        if (this.props.movies_genre){
-            fetch(get_movies_by_genre(this.props.movies_genre))
+    fetch_movies = (movies_genre) => {
+        if (movies_genre){
+            fetch(get_movies_by_genre(movies_genre))
             .then(res => res.json())
             .then(res => {
                 this.setState({
@@ -44,7 +44,7 @@ class MoviesGallery extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.fetch_movies()
+        this.fetch_movies(nextProps.movies_genre)
     }
 
     openLightbox(event, obj) {
