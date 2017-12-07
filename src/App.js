@@ -9,7 +9,6 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import VolumeOffIcon from 'material-ui/svg-icons/av/volume-off';
 import VolumeOnIcon from 'material-ui/svg-icons/av/volume-up';
 import './App.css';
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 import firebase from './database/firebase.js';
 
@@ -60,7 +59,7 @@ class App extends Component {
   onReset = () => {
     this.setState({ movies_genre: null })
   }
-
+  
   render() {
     const { movies_genre } = this.state;
 
@@ -70,31 +69,28 @@ class App extends Component {
         <header className="App-header moveWith">
           <h1 className="App-title">Welcome to the Nemo UI</h1>
         </header>
-		<table class="tableWidth bg-primary">
-			<tr>
-				<td class="moveWith sideBarPosition">
-					<tr>
-					  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
-						<RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
-					    <RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					    <RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					    <RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					    <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					  </RadioButtonGroup>
-          </tr>
-            <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
-            <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
-          <tr>
-          </tr>
-				</td>
-				<td>
-          <Infinite containerHeight={600} elementHeight={100} className="movie-gallery">
-             <MoviesGallery movies_genre={movies_genre}/>
-          </Infinite>
-        </td>
-			</tr>
-		</table>
-		<MoviesGallery movies_genre={movies_genre}/>
+		<body>
+			<table class="tableWidth">
+				<tr>
+					<td class="moveWith sideBarPosition">
+						<tr>
+						  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
+							<RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
+							<RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+							<RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+							<RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+							<RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+						  </RadioButtonGroup>
+						</tr>
+						<tr>
+							<RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
+							<RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
+						</tr>
+					</td>
+				</tr>
+			</table>
+		<div class="moviesPosition"> <MoviesGallery movies_genre={movies_genre}/> </div>
+		</body>
       </div>
       </MuiThemeProvider>
     );

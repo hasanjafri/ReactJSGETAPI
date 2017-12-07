@@ -37,14 +37,14 @@
 	padding-left: 50px;
 }
 
-.bg-primary {
+body {
   background-color: #303030;
 }
 
 .usersTopLeft {
     padding-bottom: 6px;
     margin-top: -500px;
-    margin-left: -50px;
+    margin-left: -60px;
 }
 
 .buttons-style {
@@ -66,7 +66,10 @@
 }
 
 .moviesPosition{
-	margin-left: 100px;
+	margin-left: 300px;
+	margin-top: 89px;
+	margin-right: -3px;
+	float:right;
 }
 
 table {
