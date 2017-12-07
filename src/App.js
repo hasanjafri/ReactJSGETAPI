@@ -59,40 +59,40 @@ class App extends Component {
   onReset = () => {
     this.setState({ movies_genre: null })
   }
-
+  
   render() {
     const { movies_genre } = this.state;
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <div className="App">
-        <header className="App-header">
+        <header className="App-header moveWith">
           <h1 className="App-title">Welcome to the Nemo UI</h1>
         </header>
-		<table class="tableWidth bg-primary">
-			<tr>
-				<td>
-          <tr>
-					  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
-              <RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
-					    <RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					    <RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					    <RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					    <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-					  </RadioButtonGroup>
-          </tr>
-            <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
-            <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
-          <tr>
-          </tr>
-				</td>
-				<td>
-          <Infinite containerHeight={600} elementHeight={100} className="movie-gallery">
-             <MoviesGallery movies_genre={movies_genre}/>
-          </Infinite>
-        </td>
-			</tr>
-		</table>
+		<body>
+			<table class="tableWidth">
+				<tr>
+					<td class="moveWith sideBarPosition">
+						<tr>
+						  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
+							<RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
+							<RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+							<RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+							<RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+							<RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+						  </RadioButtonGroup>
+						  
+						  <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
+						  <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
+						</tr>
+						<tr>
+							BLANK SPACE
+						</tr>
+					</td>
+				</tr>
+			</table>
+		<div class="moviesPosition"> <MoviesGallery movies_genre={movies_genre}/> </div>
+		</body>
       </div>
       </MuiThemeProvider>
     );

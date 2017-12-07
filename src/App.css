@@ -12,6 +12,8 @@
   height: 50px;
   padding: 20px;
   color: white;
+  width:100%;
+  opacity:0.9;
 }
 
 .App-title {
@@ -35,14 +37,14 @@
 	padding-left: 50px;
 }
 
-.bg-primary {
+body {
   background-color: #303030;
 }
 
 .usersTopLeft {
     padding-bottom: 6px;
     margin-top: -500px;
-    margin-left: -50px;
+    margin-left: -60px;
 }
 
 .buttons-style {
@@ -53,6 +55,21 @@
 
 .movie-gallery {
   display: block; 
+}
+
+.moveWith{
+	position: fixed;
+}
+
+.sideBarPosition{
+	margin-top: 150px;
+}
+
+.moviesPosition{
+	margin-left: 300px;
+	margin-top: 89px;
+	margin-right: -3px;
+	float:right;
 }
 
 table {
