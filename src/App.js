@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Infinite from 'react-infinite';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -10,6 +9,7 @@ import VolumeOffIcon from 'material-ui/svg-icons/av/volume-off';
 import VolumeOnIcon from 'material-ui/svg-icons/av/volume-up';
 import './App.css';
 
+import Recorder from './components/Recorder.js'
 import firebase from './database/firebase.js';
 
 import MoviesGallery from './components/MoviesGallery.js';
@@ -69,30 +69,30 @@ class App extends Component {
         <header className="App-header moveWith">
           <h1 className="App-title">Welcome to the Nemo UI</h1>
         </header>
-		<body>
-			<table class="tableWidth">
-				<tr>
-					<td class="moveWith sideBarPosition">
-						<tr>
-						  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
-							<RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
-							<RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-							<RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-							<RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-							<RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-						  </RadioButtonGroup>
-						  
-						  <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
-						  <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
-						</tr>
-						<tr>
-							BLANK SPACE
-						</tr>
-					</td>
-				</tr>
-			</table>
-		<div class="moviesPosition"> <MoviesGallery movies_genre={movies_genre}/> </div>
-		</body>
+        <table className="tableWidth">
+          <tbody>
+              <tr className="moveWith sideBarPosition">
+                <td>
+                  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
+                  <RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
+                  <RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+                  </RadioButtonGroup>
+                  
+                  <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
+                  <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
+                </td>
+                <td style={{position: 'fixed'}}>
+                  <Recorder/>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+		    <div className="moviesPosition">
+          <MoviesGallery movies_genre={movies_genre}/>
+        </div>
       </div>
       </MuiThemeProvider>
     );
