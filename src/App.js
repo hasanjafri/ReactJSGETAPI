@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -9,7 +8,7 @@ import VolumeOffIcon from 'material-ui/svg-icons/av/volume-off';
 import VolumeOnIcon from 'material-ui/svg-icons/av/volume-up';
 import './App.css';
 
-import Recorder from './components/Recorder.js'
+import Recorder from './components/Recorder.js';
 import firebase from './database/firebase.js';
 
 import MoviesGallery from './components/MoviesGallery.js';
