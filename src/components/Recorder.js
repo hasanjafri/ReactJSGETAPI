@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { ReactMic } from 'react-mic';
 
-import downloadBlob from '../helpers/downloadBlob.ts';
-
 class Recorder extends Component {
     constructor(props) {
       super(props);
@@ -26,7 +24,6 @@ class Recorder extends Component {
   
   onStop(recordedBlob) {
     console.log('recordedBlob is: ', recordedBlob);
-    downloadBlob(recordedBlob)    
   }
 
   render() {
