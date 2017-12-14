@@ -34,7 +34,11 @@ class Recorder extends Component {
           className="sound-wave"
           onStop={this.onStop}
           strokeColor="#000000"
-          backgroundColor="#FF4081" />
+          backgroundColor="#FF4081"
+          width={160}
+          height={25}
+          audioBitsPerSecond={8000}
+          mimeType="audio/wav"/>
         <button onTouchTap={this.startRecording} type="button">Start</button>
         <button onTouchTap={this.stopRecording} type="button">Stop</button>
       </div>
