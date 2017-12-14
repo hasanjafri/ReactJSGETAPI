@@ -10,7 +10,6 @@ import './App.css';
 
 import Recorder from './components/Recorder.js';
 import firebase from './database/firebase.js';
-import downloadBlob from './helpers/downloadBlob';
 
 import MoviesGallery from './components/MoviesGallery.js';
 
