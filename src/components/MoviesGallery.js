@@ -98,7 +98,7 @@ class MoviesGallery extends Component {
         console.log(output_data)
         return (
             <div>
-                <Gallery photos={output_data.links} columns={3} margin={1} onClick={this.openLightbox}/>
+                <Gallery photos={output_data.links} columns={5} margin={1} onClick={this.openLightbox}/>
                 <Lightbox images={output_data.links}
                     onClose={this.closeLightbox}
                     onClickPrev={this.gotoPrevious}
