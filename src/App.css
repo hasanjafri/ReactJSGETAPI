@@ -77,7 +77,7 @@ body {
 
 .example-enter.example-enter-active {
   opacity: 1;
-  transition: opacity 5s ease-in;
+  transition: opacity 3s ease-in;
 }
 
 .example-leave {
@@ -88,7 +88,7 @@ body {
 
 .example-leave.example-leave-active {
   opacity: 0.01;
-  transition: opacity 3s ease-in;
+  transition: opacity 2s ease-in;
 }
 
 .example-appear {

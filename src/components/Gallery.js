@@ -62,8 +62,8 @@ class Gallery extends React.Component {
                 <div ref={c => (this._gallery = c)}>
                 <CSSTransitionGroup
                     transitionName="example"
-                    transitionEnterTimeout={5000}
-                    transitionLeaveTimeout={3000}>
+                    transitionEnterTimeout={3000}
+                    transitionLeaveTimeout={2000}>
                     {thumbs.map((photo, index) => {
                         const {width, height} = photo;
                         return (<ImageComponent

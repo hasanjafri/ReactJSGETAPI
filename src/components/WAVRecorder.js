@@ -11,8 +11,9 @@ class WAVRecorder extends Component {
 
     get_movies_by_speaker = (speaker_id) => {
         var speaker_genre = this.state.household_speakers[speaker_id].genre_id;
-        var speaker_name = this.state.household_speakers[speaker_id].speaker_id;
-        this.props.onRenderGallery(speaker_genre, speaker_name);        
+        var moccast_id = this.state.household_speakers[speaker_id].speaker_id;
+        var speaker_name = this.state.household_speakers[speaker_id].name;
+        this.props.onRenderGallery(speaker_genre, moccast_id, speaker_name);        
     }
 
     componentDidMount() {

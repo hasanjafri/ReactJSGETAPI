@@ -29,29 +29,27 @@ class App extends Component {
     super(props);
     this.state = {
       movies_genre: null,
-      selected_speaker: "moccast-household-3@I:spk_n"
+      selected_speaker: "moccast-household-3@I:spk_n",
+      title: "Welcome to the Nemo UI"
     }
   }
 
-  componentDidMount() {
-  }
-
-  onRenderGallery = (speaker_genre, name) => {
+  onRenderGallery = (speaker_genre, speaker_id, name) => {
     this.setState({
       movies_genre: speaker_genre,
-      selected_speaker: name
+      selected_speaker: speaker_id,
+      title: name + "'s Dashboard"
     })
   }
   
   render() {
-    const { movies_genre } = this.state;
-    const { selected_speaker } = this.state;
+    const { movies_genre, selected_speaker, title } = this.state;
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <div className="App">
         <header className="App-header moveWith">
-          <h1 className="App-title">Welcome to the Nemo UI</h1>
+          <h1 className="App-title">{title}</h1>
         </header>
         <table className="tableWidth">
           <tbody>
