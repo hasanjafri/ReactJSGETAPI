@@ -9,7 +9,6 @@ import './App.css';
 
 //import Recorder from './components/Recorder.js';
 import WAVRecorder from './components/WAVRecorder.js'
-import firebase from './database/firebase.js';
 
 import MoviesGallery from './components/MoviesGallery.js';
 
@@ -35,26 +34,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const itemsRef = firebase.database().ref('Speakers');
-    itemsRef.on('value', (snapshot) => { 
-      let household_speakers = snapshot.val();
-      let speaker_info = [];
-      for (let item in household_speakers){
-        speaker_info.push({
-          name: item,
-          speaker_id: household_speakers[item].speaker_id,
-          genre_id: household_speakers[item].genre_id
-        });
-      }
-      this.setState({
-        household_speakers: speaker_info
-      });
-    });
   }
 
-  onRenderGallery = () => {
+  onRenderGallery = (speaker_genre, name) => {
     this.setState({
-      movies_genre: this.state.movies_genre
+      movies_genre: speaker_genre,
+      selected_speaker: name
     })
   }
   
