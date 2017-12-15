@@ -53,8 +53,8 @@ class WAVRecorder extends Component {
     render() {
         return(
         <div>
-            <RaisedButton primary={true} label="Start" className="buttons-style" onClick={this.onStart}/>
-            <RaisedButton primary={true} label="Stop" className="buttons-style" onClick={this.onStop}/>
+            <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onStart}/>
+            <RaisedButton secondary={true} label="Stop" className="buttons-style" onClick={this.onStop}/>
         </div> 
     )};
 }

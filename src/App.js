@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import RaisedButton from 'material-ui/RaisedButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import VolumeOffIcon from 'material-ui/svg-icons/av/volume-off';
 import VolumeOnIcon from 'material-ui/svg-icons/av/volume-up';
@@ -51,14 +50,6 @@ class App extends Component {
       });
     });
   }
-
-  onQuery = () => {
-    this.setState({ movies_genre: 16 })
-  }
-
-  onReset = () => {
-    this.setState({ movies_genre: null })
-  }
   
   render() {
     const { movies_genre } = this.state;
@@ -81,10 +72,6 @@ class App extends Component {
                   <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
                   </RadioButtonGroup>
                   
-                  <RaisedButton primary={true} label="Query" className="buttons-style" onClick={this.onQuery}/>
-                  <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
-                </td>
-                <td style={{position: 'fixed'}}>
                   <WAVRecorder/>
                 </td>
               </tr>
