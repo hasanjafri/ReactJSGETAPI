@@ -8,7 +8,8 @@ import VolumeOffIcon from 'material-ui/svg-icons/av/volume-off';
 import VolumeOnIcon from 'material-ui/svg-icons/av/volume-up';
 import './App.css';
 
-import Recorder from './components/Recorder.js';
+//import Recorder from './components/Recorder.js';
+import WAVRecorder from './components/WAVRecorder.js'
 import firebase from './database/firebase.js';
 
 import MoviesGallery from './components/MoviesGallery.js';
@@ -84,7 +85,7 @@ class App extends Component {
                   <RaisedButton secondary={true} label="Reset" className="buttons-style" onClick={this.onReset}/>
                 </td>
                 <td style={{position: 'fixed'}}>
-                  <Recorder/>
+                  <WAVRecorder/>
                 </td>
               </tr>
           </tbody>
