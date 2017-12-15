@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gallery from 'react-photo-gallery';
+import Gallery from './Gallery';
 import Lightbox from 'react-images'
 
 const get_movies_general = 'https://api.themoviedb.org/3/discover/movie?api_key=3d0b764688397d3892a7334e8996' +
@@ -95,10 +95,13 @@ class MoviesGallery extends Component {
             output.caption = desc_list[poster];
             output_data.links.push(output)
         }
-        console.log(output_data)
         return (
-            <div>
-                <Gallery photos={output_data.links} columns={5} margin={1} onClick={this.openLightbox}/>
+            <div>   
+                <Gallery
+                    photos={output_data.links}
+                    columns={5}
+                    margin={1}
+                    onClick={this.openLightbox}/>
                 <Lightbox images={output_data.links}
                     onClose={this.closeLightbox}
                     onClickPrev={this.gotoPrevious}

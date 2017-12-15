@@ -29,7 +29,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies_genre: null
+      movies_genre: null,
+      selected_speaker: "moccast-household-3@I:spk_n"
     }
   }
 
@@ -50,9 +51,16 @@ class App extends Component {
       });
     });
   }
+
+  onRenderGallery = () => {
+    this.setState({
+      movies_genre: this.state.movies_genre
+    })
+  }
   
   render() {
     const { movies_genre } = this.state;
+    const { selected_speaker } = this.state;
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
@@ -64,15 +72,15 @@ class App extends Component {
           <tbody>
               <tr className="moveWith sideBarPosition">
                 <td>
-                  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected="SpeakerO" labelPosition='right'>
-                  <RadioButton value="SpeakerO" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} checkedIcon={<VolumeOnIcon/>}/>
-                  <RadioButton value="Speaker1" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-                  <RadioButton value="Speaker2" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-                  <RadioButton value="Speaker3" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
-                  <RadioButton value="Speaker4" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={true} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButtonGroup className="usersTopLeft" name="Speakers" defaultSelected={selected_speaker} labelPosition='right' valueSelected={selected_speaker}>
+                  <RadioButton value="moccast-household-3@I:spk_n" label="Dashboard" style={styles.radioButton} labelStyle={styles.radioButtonLabel} disabled={this.state.selected_speaker === 'moccast-household-3@I:spk_n' ? false : true} checkedIcon={<VolumeOnIcon/>} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="moccast-household-3@I:spk_0" label="Hasan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={this.state.selected_speaker === 'moccast-household-3@I:spk_0' ? false : true} checkedIcon={<VolumeOnIcon/>} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="moccast-household-3@I:spk_1" label="Ryan" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={this.state.selected_speaker === 'moccast-household-3@I:spk_1' ? false : true} checkedIcon={<VolumeOnIcon/>} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="moccast-household-3@I:spk_2" label="Marcio" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={this.state.selected_speaker === 'moccast-household-3@I:spk_2' ? false : true} checkedIcon={<VolumeOnIcon/>} uncheckedIcon={<VolumeOffIcon/>}/>
+                  <RadioButton value="moccast-household-3@I:spk_3" label="Cedric" style={styles.radioButton} labelStyle={styles.radioButtonLabel} iconStyle={styles.radioButtonUnchecked} disabled={this.state.selected_speaker === 'moccast-household-3@I:spk_3' ? false : true} checkedIcon={<VolumeOnIcon/>} uncheckedIcon={<VolumeOffIcon/>}/>
                   </RadioButtonGroup>
                   
-                  <WAVRecorder/>
+                  <WAVRecorder onRenderGallery={this.onRenderGallery}/>
                 </td>
               </tr>
           </tbody>

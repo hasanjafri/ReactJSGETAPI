@@ -9,8 +9,9 @@ class WAVRecorder extends Component {
     }
 
     onStop = () => {
-        console.log("hey");
+        console.log("Stopped recording...");
         this.rec.stop();
+        this.props.onRenderGallery();
     };
 
     onStart = () => {
@@ -26,9 +27,13 @@ class WAVRecorder extends Component {
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://localhost:5000/vp', true);
                 xhr.onload = function () {
-                // do something to response
-                console.log(this.responseText);
-            };
+                    if (xhr.readyState === xhr.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.response);
+                            console.log(xhr.responseText);
+                        }
+                    }
+                }
             var formData = new FormData()
             formData.append("household_id", "moccast-household-3");
             formData.append("audio", recordedBlob)
@@ -40,14 +45,14 @@ class WAVRecorder extends Component {
             console.log(e);
         });
         this.rec.addEventListener("streamReady", function(e) {
-            console.log("scott");
+            console.log("Stream is ready...");
         });
         let rec = this.rec;
         this.rec.initStream()
             .then(function() {
                 rec.start();
             });
-        console.log("yo")
+        console.log("Starting to record...")
     };
 
     render() {
